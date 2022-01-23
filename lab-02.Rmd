@@ -24,48 +24,57 @@ plastic_waste <- read.csv("data/plastic-waste.csv")
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap))+geom_histogram(binwidth = .2)
 
 ```
-```{r plastic-waste-density}
+```{r plastic-waste-filter}
 plastic_waste %>%
   filter(plastic_waste_per_cap>3.5)
 ```
 
 Distributions of plastic waste per capita faceted by continent:
 
-```{r}
+```{r plastic_continent}
 ggplot(data = plastic_waste, aes(x=plastic_waste_per_cap))+geom_histogram()+facet_wrap(~continent)
 ```
 
 Density plots:
 
-```{r}
+```{r plastic-density}
 ggplot(data=plastic_waste, aes(x= plastic_waste_per_cap)) + geom_density()
 ```
 
 Distributions across continents
 
-```{r}
+```{r plastic-distributions}
 ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color = continent))+ geom_density()
 ```
 
 Overlapping colors:
 
-```{r}
+```{r plastic-color}
 ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color = continent, fill = continent))+ geom_density()
 ```
 
 Changing Transparency Levels:
 
-```{r}
+```{r plastic-transparency}
 ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= continent, fill=continent)) + geom_density(alpha=.7)
 ```
 
 
 ### Exercise 2
 
-```{r plastic-waste-density}
-plastic_waste %>%
-  filter(plastic_waste_per_cap>3.5)
+```{r plastic-new-alpha}
+ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= continent, fill=continent)) + geom_density(alpha=.12)
 ```
+
+The aesthetics of the plot control how the plot looks (color, fill), but changing  transparency is done as a characteristic of the plotting geom to be done on a more ???
+
+Box Plot:
+
+```{r plastic-box}
+ggplot(data=plastic_waste, mapping = aes(x=continent, y=plastic_waste_per_cap))+geom_boxplot()
+
+```
+
 
 ### Exercise 3
 
