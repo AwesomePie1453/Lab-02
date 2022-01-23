@@ -1,7 +1,7 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Alex Connolly"
+date: "01/26/2022"
 output: github_document
 ---
 
@@ -19,16 +19,52 @@ plastic_waste <- read.csv("data/plastic-waste.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
 
 ```{r plastic-waste-continent}
-# insert code here
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap))+geom_histogram(binwidth = .2)
+
 ```
+```{r plastic-waste-density}
+plastic_waste %>%
+  filter(plastic_waste_per_cap>3.5)
+```
+
+Distributions of plastic waste per capita faceted by continent:
+
+```{r}
+ggplot(data = plastic_waste, aes(x=plastic_waste_per_cap))+geom_histogram()+facet_wrap(~continent)
+```
+
+Density plots:
+
+```{r}
+ggplot(data=plastic_waste, aes(x= plastic_waste_per_cap)) + geom_density()
+```
+
+Distributions across continents
+
+```{r}
+ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color = continent))+ geom_density()
+```
+
+Overlapping colors:
+
+```{r}
+ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color = continent, fill = continent))+ geom_density()
+```
+
+Changing Transparency Levels:
+
+```{r}
+ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= continent, fill=continent)) + geom_density(alpha=.7)
+```
+
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+plastic_waste %>%
+  filter(plastic_waste_per_cap>3.5)
 ```
 
 ### Exercise 3
