@@ -63,10 +63,10 @@ ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= contine
 ### Exercise 2
 
 ```{r plastic-new-alpha}
-ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= continent, fill=continent)) + geom_density(alpha=.12)
+ggplot(data=plastic_waste, mapping = aes(x=plastic_waste_per_cap, color= continent, fill=continent)) +geom_density(alpha=.12)
 ```
 
-The aesthetics of the plot control how the plot looks (color, fill), but changing  transparency is done as a characteristic of the plotting geom to be done on a more ???
+If you try to put the alpha value within the aestethis, the plot dissapears completely, which i why we use it as a characteristic of a plotting geom.
 
 Box Plot:
 
@@ -78,23 +78,36 @@ ggplot(data=plastic_waste, mapping = aes(x=continent, y=plastic_waste_per_cap))+
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+```{r violin-plots}
+ggplot(data=plastic_waste, mapping = aes(x=continent, y=plastic_waste_per_cap))+ geom_violin()
+
+```
+This violin plot shows us more of the shape of the disstribution, whereas the box plots show us where the majority of the data lies, and outliers. 
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+```{r notcolor}
+ggplot(data=plastic_waste, mapping = aes(x=mismanaged_plastic_waste,y=plastic_waste_per_cap))+ geom_point() 
+```
+The relationship would be linear except for two very obvious outliers, making it more like a left skewed relationship
 
-```{r plastic-waste-violin}
-# insert code here
+```{r plastic-wasste-scatter}
+ggplot(data=plastic_waste, mapping = aes(x=mismanaged_plastic_waste,color = continent,  y=plastic_waste_per_cap))+ geom_point() 
+
 ```
 
+Its seems that the North American countries have higher waste per capita, with lower mismanged plastic waste, whereas the Asia countries have low plastic waste per capita but high mismanaged plastic waste.
+
+```{r totalpop}
+ggplot(data=plastic_waste, mapping = aes(x=total_pop,y=plastic_waste_per_cap))+ geom_point() 
+```
+
+```{r coastal-pop}
+ggplot(data=plastic_waste, mapping = aes(x=coastal_pop,y=plastic_waste_per_cap))+ geom_point() 
+```
+It seems to me that coastal population apears to have a more linear relationship with palstic waste per capital than total population has. 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
-
-```{r plastic-waste-mismanaged}
-# insert code here
-```
 
 ### Exercise 6
 
