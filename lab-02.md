@@ -167,45 +167,16 @@ ggplot(data=plastic_waste, mapping = aes(x=coastal_pop,y=plastic_waste_per_cap))
 that coastal population apears to have a more linear relationship with
 palstic waste per capital than total population has. \#\#\# Exercise 5
 
-### Exercise 6
-
-Remove this text, and add your answer for Exercise 6 here.
-
 ``` r
-# insert code here
+plastic_waste %>%
+  filter(plastic_waste_per_cap < 3.5) %>%
+ggplot()+geom_smooth(mapping = aes(x=coastal_pop / total_pop,y = plastic_waste_per_cap)) + geom_point(mapping = aes(x=coastal_pop / total_pop,y = plastic_waste_per_cap, color = continent)) 
 ```
 
-### Exercise 7
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-Remove this text, and add your answer for Exercise 7 here.
+    ## Warning: Removed 10 rows containing non-finite values (stat_smooth).
 
-``` r
-# insert code here
-```
+    ## Warning: Removed 10 rows containing missing values (geom_point).
 
-``` r
-# insert code here
-```
-
-### Exercise 8
-
-Remove this text, and add your answer for Exercise 8 here.
-
-``` r
-# insert code here
-```
-
-## Pro-Tips
-
-### Excercise 3
-
-Try this :D
-
-ggplot(data = plastic\_waste, mapping = aes(x = continent, y =
-plastic\_waste\_per\_cap)) + geom\_violin()+ geom\_boxplot(width=.3,
-fill=“green”) + stat\_summary(fun.y=median, geom=“point”)
-
-### Exercise 5
-
-Helpful
-reference:<http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements>
+![](lab-02_files/figure-gfm/plastic-vs-coastal-1.png)<!-- -->
